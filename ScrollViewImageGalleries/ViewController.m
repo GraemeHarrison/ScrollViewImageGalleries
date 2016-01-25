@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, assign) CGFloat xPosition;
 @property (nonatomic, strong) NSMutableArray *imagesArray;
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 @end
 
@@ -19,6 +20,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageControl = [[UIPageControl alloc] init];
+    self.pageControl.frame = CGRectMake(self.scrollView.frame.size.width*0.5, self.view.frame.size.height*0.95, 100.0, 20.0);
+    self.pageControl.numberOfPages = 3;
+    self.pageControl.currentPage = 0;
+    self.pageControl.currentPageIndicatorTintColor = [UIColor lightGrayColor];
+    self.pageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
+    [self.view addSubview:self.pageControl];
+    
+    self.scrollView.delegate = self;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -35,7 +46,6 @@
     
     self.imagesArray = [[NSMutableArray alloc] init];
     
-//    CGFloat newWidth1 = 
     UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(self.xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
     imageView1.image = [UIImage imageNamed:@"Lighthouse"];
     imageView1.contentMode = UIViewContentModeScaleAspectFit;
@@ -70,5 +80,9 @@
     dvc.image = view.image;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+        int pageNum = (self.scrollView.contentOffset.x / self.scrollView.frame.size.width);
+        self.pageControl.currentPage = pageNum;
+}
 
 @end
