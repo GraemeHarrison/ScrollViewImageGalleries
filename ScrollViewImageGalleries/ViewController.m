@@ -24,6 +24,10 @@
     [self setupImageViews];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 -(void)setupImageViews {
     CGFloat xPosition = 0;
     
@@ -54,8 +58,6 @@
     self.scrollView.contentSize = CGSizeMake(xPosition, self.scrollView.frame.size.height);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
+
 
 @end

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="RLT-YY-S4a">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,17 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQ2-Df-iQl">
-                                <rect key="frame" x="16" y="20" width="288" height="538"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQ2-Df-iQl">
+                                <rect key="frame" x="0.0" y="28" width="320" height="540"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dQ2-Df-iQl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-4" id="96L-j4-Uyi"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dQ2-Df-iQl" secondAttribute="bottom" constant="14" id="EP8-HB-ksb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dQ2-Df-iQl" secondAttribute="trailing" constant="-4" id="QUN-y9-LwZ"/>
-                            <constraint firstItem="dQ2-Df-iQl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="aOR-c0-sls"/>
+                            <constraint firstItem="dQ2-Df-iQl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="5Qv-f9-pYA"/>
+                            <constraint firstAttribute="trailing" secondItem="dQ2-Df-iQl" secondAttribute="trailing" id="IOG-bl-v3z"/>
+                            <constraint firstItem="dQ2-Df-iQl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YwV-50-ErO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dQ2-Df-iQl" secondAttribute="bottom" id="bsy-he-b2W"/>
                         </constraints>
                     </view>
                     <connections>
@@ -37,7 +35,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="368"/>
+            <point key="canvasLocation" x="309" y="337"/>
+        </scene>
+        <!--Image Detail View Controller-->
+        <scene sceneID="G7i-0q-cY7">
+            <objects>
+                <viewController id="RLT-YY-S4a" customClass="ImageDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2wA-37-8WK"/>
+                        <viewControllerLayoutGuide type="bottom" id="vUU-Ga-KBj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8vs-yr-8rB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeI-8X-1qM">
+                                <rect key="frame" x="0.0" y="28" width="320" height="540"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FeI-8X-1qM" secondAttribute="trailing" id="FJW-1v-qbI"/>
+                            <constraint firstItem="FeI-8X-1qM" firstAttribute="leading" secondItem="8vs-yr-8rB" secondAttribute="leading" id="UrS-RQ-4Is"/>
+                            <constraint firstItem="FeI-8X-1qM" firstAttribute="top" secondItem="2wA-37-8WK" secondAttribute="bottom" constant="8" id="VIt-T4-zlj"/>
+                            <constraint firstItem="vUU-Ga-KBj" firstAttribute="top" secondItem="FeI-8X-1qM" secondAttribute="bottom" id="Vqy-nC-rHy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="FeI-8X-1qM" id="y85-yv-Nvg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="39h-Zf-9do" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-221" y="368"/>
         </scene>
     </scenes>
 </document>
