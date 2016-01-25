@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -16,12 +17,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setupImageViews];
+}
+
+-(void)setupImageViews {
+    CGFloat xPosition = 0;
+    
+//    CGFloat newWidth1 = 
+    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
+    imageView1.image = [UIImage imageNamed:@"Lighthouse"];
+    imageView1.contentMode = UIViewContentModeScaleAspectFit;
+    imageView1.clipsToBounds = YES;
+    [self.scrollView addSubview:imageView1];
+    xPosition += self.scrollView.frame.size.width;
+    
+    
+    UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
+    imageView2.image = [UIImage imageNamed:@"Lighthouse-in-Field"];
+    imageView2.contentMode = UIViewContentModeScaleAspectFit;
+    imageView1.clipsToBounds = YES;
+    [self.scrollView addSubview:imageView2];
+    xPosition += self.scrollView.frame.size.width;
+    
+    
+    UIImageView *imageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
+    imageView3.image = [UIImage imageNamed:@"Lighthouse-night"];
+    imageView3.contentMode = UIViewContentModeScaleAspectFit;
+    imageView1.clipsToBounds = YES;
+    [self.scrollView addSubview:imageView3];
+    xPosition += self.scrollView.frame.size.width;
+    
+    self.scrollView.contentSize = CGSizeMake(xPosition, self.scrollView.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
