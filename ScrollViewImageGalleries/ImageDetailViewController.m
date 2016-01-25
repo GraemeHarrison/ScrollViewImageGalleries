@@ -28,7 +28,7 @@
 -(void)setupImageViews {
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     
-    UIImageView *imageView1 = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"Lighthouse"]];
+    UIImageView *imageView1 = [[UIImageView alloc] initWithImage: self.image];
 //    imageView1.image = [UIImage imageNamed:@"Lighthouse"];
 //    imageView1.contentMode = UIViewContentModeScaleAspectFill;
 //    imageView1.clipsToBounds = YES;

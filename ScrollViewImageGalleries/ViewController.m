@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, assign) CGFloat xPosition;
+@property (nonatomic, strong) NSMutableArray *imagesArray;
 
 @end
 
@@ -29,35 +31,44 @@
 }
 
 -(void)setupImageViews {
-    CGFloat xPosition = 0;
+    self.xPosition = 0;
+    
+    self.imagesArray = [[NSMutableArray alloc] init];
     
 //    CGFloat newWidth1 = 
-    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
+    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(self.xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
     imageView1.image = [UIImage imageNamed:@"Lighthouse"];
     imageView1.contentMode = UIViewContentModeScaleAspectFit;
     imageView1.clipsToBounds = YES;
     [self.scrollView addSubview:imageView1];
-    xPosition += self.scrollView.frame.size.width;
+    self.xPosition += self.scrollView.frame.size.width;
+    [self.imagesArray addObject:imageView1];
     
-    
-    UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
+    UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(self.xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
     imageView2.image = [UIImage imageNamed:@"Lighthouse-in-Field"];
     imageView2.contentMode = UIViewContentModeScaleAspectFit;
     imageView1.clipsToBounds = YES;
     [self.scrollView addSubview:imageView2];
-    xPosition += self.scrollView.frame.size.width;
-    
-    
-    UIImageView *imageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
+    self.xPosition += self.scrollView.frame.size.width;
+    [self.imagesArray addObject:imageView2];
+
+    UIImageView *imageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(self.xPosition, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame))];
     imageView3.image = [UIImage imageNamed:@"Lighthouse-night"];
     imageView3.contentMode = UIViewContentModeScaleAspectFit;
     imageView1.clipsToBounds = YES;
     [self.scrollView addSubview:imageView3];
-    xPosition += self.scrollView.frame.size.width;
-    
-    self.scrollView.contentSize = CGSizeMake(xPosition, self.scrollView.frame.size.height);
+    self.xPosition += self.scrollView.frame.size.width;
+    [self.imagesArray addObject:imageView3];
+
+    self.scrollView.contentSize = CGSizeMake(self.xPosition, self.scrollView.frame.size.height);
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ImageDetailViewController *dvc = (ImageDetailViewController *) segue.destinationViewController;
+    int index = self.scrollView.contentOffset.x / self.scrollView.frame.size.width;
+    UIImageView *view = [self.imagesArray objectAtIndex:index];
+    dvc.image = view.image;
+}
 
 
 @end

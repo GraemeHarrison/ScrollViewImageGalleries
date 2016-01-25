@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageDetailViewController : UIViewController <UIScrollViewDelegate>
+@property (nonatomic,strong) UIImage *image;
 
 @end
